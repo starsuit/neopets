@@ -1,4 +1,4 @@
-const app = require("./src/app");
+const app = require("./app");
 
 app.listen(app.get("port"), () => {
   // eslint-disable-next-line no-console

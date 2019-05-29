@@ -1,4 +1,4 @@
-const request = require("./src/utils/request");
+const request = require("./utils/request");
 const data = require("./src/utils/neoData.json");
 
 let neoNames;
