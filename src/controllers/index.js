@@ -13,15 +13,18 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/api/", (req, res, next) => {
-  const search = req.query.search;
+  const { search, key } = req.query;
   let result = [];
-  if (typeof search === "number") {
-    result = data.filter(pet => pet.id === search);
-  } else {
-    result = data.filter(pet => pet.name === search);
+  if (key !== "sylvia") res.send("requires key");
+  else {
+    if (typeof search === "number") {
+      result = data.filter(pet => pet.id === search);
+    } else {
+      result = data.filter(pet => pet.name === search);
+    }
+    if (result.length === 0) res.send("no data");
+    else res.json(result);
   }
-  if (result.length === 0) res.send("no data");
-  else res.json(result);
 });
 
 //Error handling
