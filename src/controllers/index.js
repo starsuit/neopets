@@ -14,11 +14,13 @@ router.get("/", (req, res) => {
 router.get("/api/", (req, res) => {
   const { search } = req.query;
   let result = [];
-
-  if (typeof search === "number") {
-    result = data.filter(pet => pet.id === search);
-  } else {
-    result = data.filter(pet => pet.name === search);
+  if (!search) result = data;
+  else {
+    if (typeof search === "number") {
+      result = data.filter(pet => pet.id === search);
+    } else {
+      result = data.filter(pet => pet.name === search);
+    }
   }
   if (result.length === 0) res.send("no data");
   else res.json(result);
