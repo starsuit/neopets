@@ -22,8 +22,7 @@ router.get("/api/", (req, res) => {
       result = data.filter(pet => pet.name === search);
     }
   }
-  if (result.length === 0) res.send("no data");
-  else res.json(result);
+  res.json(result);
 });
 
 //Error handling
