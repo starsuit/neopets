@@ -19,7 +19,9 @@ router.get("/api/", (req, res) => {
     if (typeof search === "number") {
       result = data.filter(pet => pet.id === search);
     } else {
-      result = data.filter(pet => pet.name === search);
+      result = data.filter(
+        pet => pet.name.toLowerCase() === search.toLowerCase()
+      );
     }
   }
   res.json(result);
